@@ -10,7 +10,7 @@ var OrderPresenter = (function (data) {
             color: "btn-warning"
         },
         2: {
-            name: "Terminda",
+            name: "Terminada",
             color: "btn-success"
         }
     }

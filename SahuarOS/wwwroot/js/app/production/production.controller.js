@@ -13,12 +13,17 @@
         var presenter = ProductionPresenter();
         var self = {
             order: {},
+            download: download,
             startProduct: startProduct,
             finishProduct: finishProduct
         };
 
         self.order = presenter.present(Order(context.order));
 
+
+        function download(productId, name, index) {
+            downloadURI('/Order/GCode/' + productId, name + '.gcode');
+        }
 
         function startProduct(productId, name, index) {
             var product = self.order.products[index];
@@ -29,13 +34,10 @@
                     data: {orderId: self.order.id, productId: productId}
                 }).then(function (response) {
                         product.status = presenter.presentStatus(1);
-                        downloadURI('/Order/GCode/' + productId, name + '.gcode');
                     },
                     function (response) { // optional
                         // failed
                     });
-            else
-                downloadURI('/Order/GCode/' + productId, name + '.gcode');
         }
 
 

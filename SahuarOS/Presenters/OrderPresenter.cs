@@ -26,9 +26,9 @@ namespace SahuarOS.Presenters
                 case OrderProduct.OrderProductStatus.Received:
                     return "Recibido";
                 case OrderProduct.OrderProductStatus.Started:
-                    return "Empezado";
+                    return "Imprimiendo";
                 case OrderProduct.OrderProductStatus.Finished:
-                    return "Termindo";
+                    return "Terminado";
                 default:
                     throw new ArgumentOutOfRangeException(nameof(status), status, null);
             }

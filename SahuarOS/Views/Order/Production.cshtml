@@ -46,15 +46,20 @@
                                         <div class="col-xs-12 col-sm-6 emphasis">
                                         </div>
                                         <div class="col-xs-12 col-sm-12 emphasis">
+                                            <button ng-click="vm.download(product.id, product.name, $index)"
+                                                    type="button" class="btn btn-default btn-xs">
+                                                <i class="fa fa-download"></i>
+                                                Descargar
+                                            </button>
                                             <button ng-click="vm.startProduct(product.id, product.name, $index)"
                                                     type="button" class="btn btn-primary btn-xs">
-                                                <i class="fa fa-user"></i>
+                                                <i class="fa fa-hdd-o"></i>
                                                 Empezar
                                             </button>
                                             <button
                                                 ng-click="vm.finishProduct(product.id, product.name, $index)"
                                                 type="button" class="btn btn-success btn-xs">
-                                                <i class="fa fa-user"> </i> Terminar
+                                                <i class="fa fa-check-square-o"> </i> Terminar
                                             </button>
                                         </div>
                                     </div>

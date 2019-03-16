@@ -10,7 +10,7 @@ var ProductionPresenter = (function (data) {
             color: "btn-warning"
         },
         2: {
-            name: "Terminda",
+            name: "Terminada",
             color: "btn-success"
         }
     }
@@ -22,7 +22,7 @@ var ProductionPresenter = (function (data) {
         },
         1: {
             id: 1,
-            name: "Empezado",
+            name: "Imprimiendo",
             color: "btn-warning"
         },
         2: {

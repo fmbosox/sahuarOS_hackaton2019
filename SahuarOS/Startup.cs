@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Infrastructure.Model;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -31,7 +33,12 @@ namespace SahuarOS
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            var connection = "Server=10.211.55.3;Database=sahuaros;user id=sa;password=tracert";
+            services.AddDbContext<SahuarOSContext>
+            (options => options
+                .UseLazyLoadingProxies()
+                .UseSqlServer(connection, b => b.MigrationsAssembly("SahuarOS")));
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -57,7 +64,7 @@ namespace SahuarOS
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Order}/{action=Index}/{id?}");
             });
         }
     }

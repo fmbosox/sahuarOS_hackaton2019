@@ -2,6 +2,6 @@
 {
     public class NewOrderResponse
     {
-        
+        public bool Exitosa { get; set; }
     }
 }

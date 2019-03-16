@@ -5,7 +5,8 @@ namespace Core.Aplication.NewOrder
 {
     public class NewOrderRequest
     {
-        public Guid UserId { get; set; }
-        public ICollection<int> Products { get; set; }
+        public int CustomerId { get; set; }
+        public ICollection<OrderProductRequest> Products { get; set; }
+        public DateTime Now;
     }
 }

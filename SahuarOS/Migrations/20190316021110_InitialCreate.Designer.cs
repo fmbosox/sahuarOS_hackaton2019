@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace SahuarOS.Migrations
 {
-    [DbContext(typeof(SahuarOSContext))]
+    [DbContext(typeof(SahuarOSEFContext))]
     [Migration("20190316021110_InitialCreate")]
     partial class InitialCreate
     {

@@ -1,12 +1,13 @@
 ﻿using Core.Domain.Order;
+using Core.Model;
 using Core.SharedKernel;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Model
 {
-    public class SahuarOSContext : DbContext
+    public class SahuarOSEFContext : DbContext, SahuarOSContext
     {
-        public SahuarOSContext(DbContextOptions options)
+        public SahuarOSEFContext(DbContextOptions options)
             : base(options)
         {
         }
@@ -28,6 +29,11 @@ namespace Infrastructure.Model
             modelBuilder.Entity<OrderProduct>(orderProduct =>
             {
                 orderProduct.HasOne(op => op.Product);
+            });
+
+            modelBuilder.Entity<Product>(product =>
+            {
+                product.HasOne(p => p.Category);
             });
         }
     }

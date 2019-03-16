@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Infrastructure.Model;
+﻿using Infrastructure.Model;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -34,7 +29,7 @@ namespace SahuarOS
             });
 
             var connection = "Server=10.211.55.3;Database=sahuaros;user id=sa;password=tracert";
-            services.AddDbContext<SahuarOSContext>
+            services.AddDbContext<SahuarOSEFContext>
             (options => options
                 .UseLazyLoadingProxies()
                 .UseSqlServer(connection, b => b.MigrationsAssembly("SahuarOS")));

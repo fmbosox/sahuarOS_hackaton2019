@@ -8,10 +8,12 @@ namespace Core.Aplication.NewOrder
     {
         private readonly NewOrderResponse _response;
         private readonly SahuarOSContext _context;
+        private readonly NewOrderEventDistpacher _eventDistpacher;
 
-        public NewOrderUseCase(SahuarOSContext context)
+        public NewOrderUseCase(SahuarOSContext context, NewOrderEventDistpacher eventDistpacher)
         {
             _context = context;
+            _eventDistpacher = eventDistpacher;
             _response = new NewOrderResponse();
         }
 
@@ -32,6 +34,7 @@ namespace Core.Aplication.NewOrder
             {
                 _context.Orders.Add(order);
                 _context.SaveChanges();
+                _eventDistpacher.Distpach(order);
                 _response.Exitosa = true;
             }
             catch (Exception e)

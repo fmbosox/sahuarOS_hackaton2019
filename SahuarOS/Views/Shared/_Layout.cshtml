@@ -28,6 +28,9 @@
 
     <!-- Custom Theme Style -->
     <link href="~/css/site.css" rel="stylesheet">
+    
+    @if (IsSectionDefined("Styles"))
+    {@RenderSection("Styles", required: false)}
 </head>
 
 <body class="nav-md">
@@ -84,6 +87,7 @@
 <script src="~/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
 <!-- bootstrap-daterangepicker -->
 <script src="~/vendors/moment/min/moment.min.js"></script>
+<script src="~/vendors/moment/locale/es.js"></script>
 <script src="~/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
 <script src="~/js/site.js" asp-append-version="true"></script>

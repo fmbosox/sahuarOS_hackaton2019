@@ -269,7 +269,4 @@
     <_ContentIncludedByDefault Remove="wwwroot\vendors\select2\docs\_sass\_syntax-highlighting.scss" />
     <_ContentIncludedByDefault Remove="wwwroot\vendors\select2\docs\_sass\_typography.scss" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="wwwroot\lib\angularjs" />
-  </ItemGroup>
 </Project>

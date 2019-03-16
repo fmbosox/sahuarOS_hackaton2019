@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using Core.SharedKernel;
 
 namespace Core.Domain.Order
@@ -45,6 +46,21 @@ namespace Core.Domain.Order
             else
                 Products.Add(product);
         }
+
+        public decimal FinishedPercentage()
+        {
+            var finishedProducts = FinishedProducts().Sum(p => p.Amount);
+            return  finishedProducts == 0
+                ? 0
+                : (finishedProducts / Products.Sum(p => p.Amount)) * 100;
+        }
+
+
+        public virtual IList<OrderProduct> FinishedProducts()
+        {
+          return Products.Where(product => product.Status == OrderProduct.OrderProductStatus.Finished).ToList();
+        }
+
 
         public static Order Create(Customer customer, DateTime createdAt)
         {

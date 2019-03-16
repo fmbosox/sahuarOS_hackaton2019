@@ -50,21 +50,45 @@ namespace Core.Domain.Order
         public decimal FinishedPercentage()
         {
             var finishedProducts = FinishedProducts().Sum(p => p.Amount);
-            return  finishedProducts == 0
+            var total = Products.Sum(p => p.Amount);
+            var progress = (decimal) finishedProducts / total;
+            return finishedProducts == 0
                 ? 0
-                : (finishedProducts / Products.Sum(p => p.Amount)) * 100;
+                : Math.Round(progress, 2, MidpointRounding.AwayFromZero) * 100;
         }
 
 
         public virtual IList<OrderProduct> FinishedProducts()
         {
-          return Products.Where(product => product.Status == OrderProduct.OrderProductStatus.Finished).ToList();
+            return Products.Where(product => product.Status == OrderProduct.OrderProductStatus.Finished).ToList();
         }
 
 
         public static Order Create(Customer customer, DateTime createdAt)
         {
             return new Order {Customer = customer, CreatedAt = createdAt, LastModified = createdAt};
+        }
+
+        public byte[] StarProduct(int productId, DateTime now)
+        {
+            var product = Products.First(p => p.Product.Id == productId);
+            var gCode = product.Start(now);
+            Status = OrderStatus.Started;
+            LastModified = now;
+
+            return gCode;
+        }
+
+        public void FinishProduct(int productId, DateTime now)
+        {
+            var product = Products.First(p => p.Product.Id == productId);
+            product.Finish(now);
+
+            if (Products.ToList().TrueForAll(p => p.Status == OrderProduct.OrderProductStatus.Finished))
+                Status = OrderStatus.Finished;
+            else
+                Status = OrderStatus.Started;
+            LastModified = now;
         }
     }
 }

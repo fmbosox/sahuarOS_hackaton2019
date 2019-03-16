@@ -6,12 +6,7 @@
 
     OrderController.$inject = [
         '$scope',
-        'OrderContext',
-        /*'MonitoreoMisionHub',
-        'MonitorMisionRepository',
-        'MonitoreoMisionPresenter',
-        'NgMap',
-        '$uibModal'*/];
+        'OrderContext'];
 
     function OrderController($scope, context) {
         var presenter = OrderPresenter();

@@ -20,12 +20,14 @@ namespace Core.Aplication.Queries.OrderDetails
                        {
                            id = o.Id,
                            status = o.Status,
+                           createdAt = o.CreatedAt,
                            products = o.Products.Select(p => new OrderProductDetailsResult()
                            {
                                descripciton = p.Product.Description,
                                id = p.Product.Id,
                                name = p.Product.Name,
-                               sku = p.Product.SKU 
+                               sku = p.Product.SKU,
+                               status = p.Status,
                            }).ToList()
                        }).FirstOrDefault() ??
                    new OrderDetailsResult();

@@ -23,13 +23,20 @@ namespace Core.Domain.Order
         {
         }
 
-        /*public OrderProduct(Product product, DateTime createdAt)
+
+        public byte[] Start(DateTime now)
         {
-            CreatedAt = createdAt;
-            LastModified = createdAt;
-            Status = OrderProductStatus.Received;
-            Product = product;
-        }*/
+            Status = OrderProductStatus.Started;
+            LastModified = now;
+
+            return Product.GCode;
+        }
+
+        public void Finish(DateTime now)
+        {
+            Status = OrderProductStatus.Finished;
+            LastModified = now;
+        }
 
         public int IncreaseAmount(int amount)
         {

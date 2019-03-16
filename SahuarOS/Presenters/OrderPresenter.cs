@@ -18,7 +18,22 @@ namespace SahuarOS.Presenters
                     throw new ArgumentOutOfRangeException(nameof(status), status, null);
             }
         }
-        
-        
+
+        public static string PresentStatus(OrderProduct.OrderProductStatus status)
+        {
+            switch (status)
+            {
+                case OrderProduct.OrderProductStatus.Received:
+                    return "Recibido";
+                case OrderProduct.OrderProductStatus.Started:
+                    return "Empezado";
+                case OrderProduct.OrderProductStatus.Finished:
+                    return "Termindo";
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(status), status, null);
+            }
+        }
+
+
     }
 }

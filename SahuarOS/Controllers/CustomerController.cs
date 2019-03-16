@@ -21,7 +21,7 @@ namespace SahuarOS.Controllers
             var result = query.Execute(id).orders.Select(o => new
             {
                 o.id,
-                lastModified = o.lastModified.ToShortDateString(),
+                lastModified = o.lastModified.ToString("MM/dd/yyyy H:mm"),
                 status = OrderPresenter.PresenetStatus(o.status)
             });
 

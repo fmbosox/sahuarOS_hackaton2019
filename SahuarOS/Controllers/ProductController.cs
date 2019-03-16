@@ -18,5 +18,10 @@ namespace SahuarOS.Controllers
             var query = new ProductsByCategoryQuery(_context);
             return Json(query.Execute(id));
         }
+
+        public IActionResult Image(int id)
+        {
+            return File(_context.Products.Find(id)?.Image, "image/jpeg");
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Core.Aplication.NewOrder;
+using Core.Aplication.Queries.OrderDetails;
 using Core.Aplication.Queries.PendingOrders;
 using Infrastructure.Model;
 using Microsoft.AspNetCore.Mvc;
@@ -47,6 +48,13 @@ namespace SahuarOS.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult Details(int id)
+        {
+            var query = new OrderDetailsQuery(_context);
+
+            return Json(query.Execute(id));
         }
     }
 }
